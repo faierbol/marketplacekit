@@ -11147,3 +11147,7 @@ a:hover {
   font-size: 90%;
 }
 
+.bg-hero {
+  background-image: url("/images/hero-bg-compressor.png");
+}
+
