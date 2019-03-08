@@ -2,7 +2,13 @@
 
     <div class="row   mt-5 mb-0" >
         <div class="col-sm-6 offset-sm-3">
-            <h2 class="text-{{widget.alignment}} pb-2">{{widget.title}}</h2>
+		  {% if current_locale() != 'ar' %}
+			<div class="text-center mb-4"> <img src="{{ setting('logo', '../../logo.png') }}" class="hero-img" title=""/></div>
+           {% else %}
+			<div class="text-center mb-4"> <img src="logo-ar.svg" class="hero-img" title=""/></div>
+
+		   {% endif %}
+		    <h2 class="text-{{widget.alignment}} pb-2">{{widget.title}}</h2>
             <p class="text-{{widget.alignment}} pb-2 text-muted">{{widget.metadata}}</p>
         </div>
     </div>

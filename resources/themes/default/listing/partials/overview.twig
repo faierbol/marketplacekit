@@ -73,7 +73,22 @@
                                 {% endif %}
 
                             </div>
+
                         </div>
+
+                        <hr/>
+                       
+                        <div class="row">
+                            <div class="col-md-12" id="listing-description">
+                           {% for t,n in listing.meta %}
+                            <h6 class="mt-2"> {{__(t)  |capitalize }}</h6>
+                                  
+                                    {{ __(n)  |capitalize}}
+                           {% endfor %}
+                           
+                            </div>
+                        </div>
+                       
 
                         {% if listing.tags %}
                             {% for tag in listing.tags %}

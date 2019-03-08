@@ -5,7 +5,12 @@
         {% if not setting('site_logo') %}
             {{ setting('site_title') }}
         {% else %}
-            <img src="{{ setting('logo', '../../logo.png') }}" title="{{ setting('site_title') }}" class="logo"/>
+        
+            {% if current_locale() != 'ar' %}
+                <img src="{{ setting('logo', '../../logo.png') }}" title="{{ setting('site_title') }}" class="logo"/>
+            {% else %}
+               <img src="/logo-ar.svg" title="{{ setting('site_title') }}" class="logo"/>
+            {% endif %}
         {% endif %}
     </a>
 

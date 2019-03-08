@@ -11139,10 +11139,11 @@ a:hover {
   }
 }
 
-.fb-radio-group .radio input {
-  padding: 0 !important;
-  width: auto !important;
-  height: auto !important;
-  float: left !important;
+.hero-img {
+  width: 22rem;
+}
+
+.badge {
+  font-size: 90%;
 }
 

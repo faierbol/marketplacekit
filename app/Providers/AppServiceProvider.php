@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\Schema; 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\FileViewFinder;
 use Theme;
@@ -18,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        Schema::defaultStringLength(191);
         //
         /*Setting::extend('mystore', function($app) {
             return $app->make('App\Support\MyStore');
