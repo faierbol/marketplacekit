@@ -51,7 +51,7 @@ class HomeController extends Controller
         $current_locale = LaravelLocalization::getCurrentLocale();
         $data['widgets'] = Widget::where('locale', $current_locale)->orderBy('position', 'ASC')->get();
         $data['show_search'] = false;
-
+        
         MetaTag::set('title', Setting::get('home_title'));
         MetaTag::set('description', Setting::get('home_description'));
 
