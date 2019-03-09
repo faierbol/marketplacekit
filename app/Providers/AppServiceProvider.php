@@ -96,11 +96,9 @@ class AppServiceProvider extends ServiceProvider
             $timezone = setting('timezone', config("app.timezone"));
             config(['app.timezone' => $timezone]);
             date_default_timezone_set($timezone);
-            if(env("production")){
-
-                config(['services.facebook.client_id' => setting("facebook_key")]);
-                config(['services.facebook.client_secret' => setting("facebook_secret")]); 
-            }
+            
+            config(['services.facebook.client_id' => setting("facebook_key")]);
+            config(['services.facebook.client_secret' => setting("facebook_secret")]); 
             
             if (env("DEMO")) {
                 setting(['google_maps_key' => env("DEMO_GOOGLE_MAPS_KEY")]);
