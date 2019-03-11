@@ -177,7 +177,8 @@
 {% endblock %}
 
 {% block scripts %}
-    <script>
+
+  <script>
 
 
         var xhr = null;
@@ -358,11 +359,14 @@
 
         var view = '{{ view }}';
         $(function () {
+              console.log("OLD");
             initListings();
             if (view == 'map')
                 updateMap();
         });
 
     </script>
+
+    
 
 {% endblock %}

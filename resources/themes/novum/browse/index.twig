@@ -174,8 +174,9 @@
 {% block footer %}{% endblock %}
 
 {% block scripts %}
-    <script>
+  <script>
 
+        console.log("STARTING SCRIPT");
 
         var xhr = null;
         var params = {{ params|json_encode() | raw }};
@@ -220,6 +221,7 @@
         }
 
         function initListings() {
+             console.log("START initListings");
 
             //on click categories submit new URL
             $(".category-link").click(function (e) {
@@ -227,6 +229,7 @@
                 var url = '{{ route(setting('marketplace_index')) }}?' + $(".auto_submit_item").awesomeFormSerializer({
                     category: $(this).data('category'),
                 });
+                
                 loadPage(url);
             });
 
@@ -265,86 +268,54 @@
         }
 
         var markers = [];
-        var map = null;
+        var mymap = null;
 
         function removeMarkers() {
             console.log(markers);
             //Loop through all the markers and remove
-            for (var i = 0; i < markers.length; i++) {
-                markers[i].setMap(null);
-            }
             markers = [];
+           
         };
-
+ 
+                  
+                     
         function initMap(locations) {
-            var location = new google.maps.LatLng({{ lat }}, {{ lng }});
-            console.log('locations.length', locations);
-            if (locations.length > 0) {
-                location = new google.maps.LatLng(locations[0]['lat'], locations[0]['lng']);
-            }
-            $('#map').height(540);
 
-            var mapCanvas = document.getElementById('map');
-            var mapOptions = {
-                center: location,
-                zoom: 8,
-                panControl: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
-            if (!map) {
-                map = new google.maps.Map(mapCanvas, mapOptions);
-            } else {
-                map.panTo(location);
-            }
+                    console.log("start: initmap");
+                    var lat = locations[0]['lat'];
+                    var lng = locations[0]['lng'];
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString,
-                maxWidth: 400
-            });
+                    var name_listing = 'name';  
+                    if(mymap == null){
+                        mymap = L.map('mapid').setView([lat, lng], 13);
+                        L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                            maxZoom: 18,  
+                        }).addTo(mymap);
 
-            var marker, i, contentString;
-            for (i = 0; i < locations.length; i++) {
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(locations[i]['lat'], locations[i]['lng']),
-                    map: map
-                });
-
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        contentString = '<div class="info-window">' +
-                            '<h3>' + locations[i].title + '</h3>' +
-                            '<img src="' + locations[i].thumbnail + '" style="width: 75px" />' +
-                            '<div class="info-content">' +
-                            '<p>' + locations[i].short_description + ' ' + locations[i].price + '</p>' +
-                            '</div>' +
-                            '</div>';
-
-                        var contentString = '<div class="info-window">' +
-                            '        <div class="row">' +
-                            '            <div class="col-sm-12">' +
-                            '                <a href="' + locations[i].url + '"><img src="' + locations[i].thumbnail + '" style="height: 200px"/></a>' +
-                            '            </div>' +
-                            '            <div class="col-sm-12">' +
-                            '                <h6>' + locations[i].title + '</h6>' +
-                            '                <div class="content">' + locations[i].short_description + '' +
-                            '                </div>' +
-                            '                <h6 class="text-danger">' + locations[i].price_formatted + '</h6> <a href="' + locations[i].url + '">Order</a>' +
-                            '            </div>' +
-                            '        </div>' +
-                            '    </div>';
-
-
-                        infowindow.setContent(contentString);
-                        infowindow.open(map, marker);
                     }
-                })(marker, i));
-
-                markers.push(marker);
-            }
+                   
+                 $('#mapid').height(540);
+                    
+                     for (i = 0; i < locations.length; i++) {
+                     
+                         var position_lat = locations[i]['lat'];
+                         var position_lng = locations[i]['lng'];
+                         
+                        var marker = L.marker([position_lat, position_lng]).addTo(mymap);
+                        var title = "<b>"+locations[i].title+"</b><br/> <a href=" + locations[i].url + ">ouvrir</a>";
+                        marker.bindPopup(title).openPopup();
+                        markers.push(marker);
+                     }
+           
+           
+            
+            
 
         }
 
         function updateMap() {
+            console.log("updateMap");
             removeMarkers();
             var posting = $.get('{{ route(setting('marketplace_index')) }}?ajax=1', $(".auto_submit_item").serialize());
             posting.done(function (data) {
@@ -355,7 +326,9 @@
 
         var view = '{{ view }}';
         $(function () {
+            console.log("STARTING SCRIPT");
             initListings();
+             console.log("AFTER initListings");
             if (view == 'map')
                 updateMap();
         });

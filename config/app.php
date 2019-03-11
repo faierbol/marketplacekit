@@ -179,7 +179,7 @@ return [
         App\Providers\ConfigServiceProvider::class,
         Spiritix\LadaCache\LadaCacheServiceProvider::class,
         Gerardojbaez\Laraplans\LaraplansServiceProvider::class,
-
+         
     ],
 
     /*
@@ -245,6 +245,7 @@ return [
         'Searchy' => TomLingham\Searchy\Facades\Searchy::class,
         'Zipper' => Chumper\Zipper\Zipper::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        'Geocoder' => Toin0u\Geocoder\Facade\Geocoder::class,
 
     ],
 

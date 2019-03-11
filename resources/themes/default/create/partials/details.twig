@@ -1,76 +1,97 @@
 <div class="card mb-4">
-    <h6 class="card-header bg-white">{{ __("Listing details") }}</h6>
+    <h6 class="card-header bg-white">
+        {{ __("Listing details") }}</h6>
     <div class="card-body">
-
-
         <div class="form-group">
-            <label>{{ __("Title") }}</label>
+            <label>
+                {{ __("Title") }}</label>
             {{ form_text('title', null, {'class' : 'form-control'}) }}
         </div>
-
         <div class="form-group">
-            <label>{{ __("Description") }}</label>
+            <label>
+                {{ __("Description") }}</label>
             <div id="description" style="height: 200px">
                 {{  listing.description | raw }}
             </div>
             {{ form_hidden('description', null, {'class' : 'form-control'}) }}
         </div>
-
         <div class="form-group">
-            <label>{{ __("Tags") }}</label>
+            <label>
+                {{ __("Tags") }}</label>
             {{ form_text('tags_string', null, {'class' : 'tags'}) }}
         </div>
-
-
     </div>
-
 </div>
-
-
 <div class="card mb-4">
-    <h6 class="card-header bg-white">{{ __("Location") }}</h6>
+    <h6 class="card-header bg-white">
+        {{ __("Location") }}</h6>
     <div class="card-body">
-
 
         <div class="form-group">
             {{ form_text('location', null, {'class' : 'form-control', 'id' : 'location'}) }}
             {{ form_hidden('lat', null, {'class' : 'form-control', 'id' : 'lat'}) }}
             {{ form_hidden('lng', null, {'class' : 'form-control', 'id' : 'lng'}) }}
-
-            <div id="create_map" style="width: 100%; height: 400px;"></div>
-
-			<div class="row mt-4">
-				<div class="col-6">
-					<div class="form-group">
-						<label>{{ __("City") }}</label>
-						{{ form_text('city', null, {'class' : 'form-control', 'id' : 'city'}) }}
-					</div>		
-				</div>		
-				<div class="col-6">
-					<div class="form-group">
-						<label>{{ __("Country") }}</label>
-						{{ form_text('country', null, {'class' : 'form-control', 'id' : 'country', 'readonly':'readonly'}) }}
-					</div>
-				</div>
-			</div>
-
+            <div style=style="width: 100%; height: 400px;">
+                <div id="mapid">
+                </div>
+                </div>
+                <script>
+                    var lat = '{{ listing.lat }}';
+                    var lng = '{{ listing.lng }}';
+                    var name_listing = '{{ listing.title }}';
+                    var mymap = L.map('mapid').setView([
+                        lat, lng
+                    ], 13);
+                    L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                        maxZoom: 18,
+                        noWrap: true
+                    }).addTo(mymap);
+                    var marker = L.marker([lat, lng]).addTo(mymap);
+                    var title = "<b>" + name_listing + "</b>";
+                    marker.bindPopup(title).openPopup();
+                    var updateMarker = function (lat, lng) {
+                        marker.setLatLng([lat, lng]).bindPopup(title).openPopup();
+                        return false;
+                    };
+                    mymap.on('click', function (e) {
+                        $('#lat').val(e.latlng.lat);
+                        $('#lng').val(e.latlng.lng);
+                        $('#location').val(e.latlng.lng + " " + e.latlng.lng);
+                        updateMarker(e.latlng.lat, e.latlng.lng);
+                    });
+                </script>
+                {# <div id="create_map" style="width: 100%; height: 400px;"></div> #}
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>
+                                {{ __("City") }}</label>
+                            {{ form_text('city', null, {'class' : 'form-control', 'id' : 'city'}) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>
+                                {{ __("Country") }}</label>
+                            {{ form_text('country', null, {'class' : 'form-control', 'id' : 'country', 'readonly':'readonly'}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
-</div>
-
-<script>
-    if($('#description').length) {
-        var quill = new Quill('#description', {
-            placeholder: '',
-            theme: 'snow'  // or 'bubble'
-        });
-        quill.on('editor-change', function (eventName, args) {
-            $('input[name=description]').val(quill.root.innerHTML);
-        });
-    }
-        if($('#create_map').length) {
-
+    <script>
+        if ($('#description').length) {
+            var quill = new Quill('#description', {
+                placeholder: '',
+                theme: 'snow' // or 'bubble'
+            });
+            quill.on('editor-change', function (eventName, args) {
+                $('input[name=description]').val(quill.root.innerHTML);
+            });
+        }
+        if ($('#create_map').length) {
             $('#create_map').locationpicker({
                 location: {
                     latitude: {{listing.lat}},
@@ -79,19 +100,16 @@
                 radius: 0,
                 enableAutocomplete: true,
                 enableAutocompleteBlur: true,
-
                 inputBinding: {
                     latitudeInput: $('#lat'),
                     longitudeInput: $('#lng'),
                     locationNameInput: $('#location')
                 },
-
                 onchanged: function (currentLocation, radius, isMarkerDropped) {
                     var addressComponents = $(this).locationpicker('map').location.addressComponents;
                     $('#city').val(addressComponents.city);
                     $('#country').val(addressComponents.country);
                 }
             });
-
         }
-</script>
+    </script>

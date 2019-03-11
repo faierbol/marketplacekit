@@ -34,11 +34,11 @@
     {{  MetaTag.tag('image') | raw }}
 
     <!-- Scripts -->
-    {% if setting('googlmapper.key') %}
+    {# {% if setting('googlmapper.key') %}
         {{ Mapper.renderJavascript() | raw }}
     {% else %}
         <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
-    {% endif %}
+    {% endif %} #}
 
     {% set scripts = jsdeliver_combine("default", "js")|split(',') %}
     {% for script in scripts %}
@@ -54,7 +54,16 @@
     {% for style_href in styles %}
     <link href="https://cdn.jsdelivr.net/{{style_href}}" rel="stylesheet"/>
     {% endfor %}
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
 
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+
+   
     <!-- App Scripts & Styles -->
     <script src="{{ asset('themes/' ~ current_theme() ~ '/js/app.js') }}"></script>
     {% if setting('theme_css') %}

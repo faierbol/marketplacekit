@@ -11,7 +11,7 @@ use App\Models\Listing;
 use App\Models\User;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Location;
-use Mapper;
+//use Mapper;
 use Setting;
 use MetaTag;
 

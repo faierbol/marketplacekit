@@ -139,13 +139,21 @@
                         <a href="https://www.google.com/maps/?q={{ listing.lat }},{{ listing.lng }}" target="_blank" class="small float-right"><i class="mdi mdi-magnify-plus-outline"></i>{{ __("View in fullscreen") }}
                         </a></h6>
 
-                    <div style="width: 100%; height: 12em;">
-                        {{ Mapper.render() | raw }}
+                    <div style="width: 100%;">
+                        {# {{ Mapper.render() | raw }} #}
+                         <div id="mapid"></div>
+                    
                     </div>
+
+                     
 
                 </div>
             </div>
         {% endif %}
+                 
+           
+                      
+                
 
         <div class="row mt-3">
             <div class="col-md-12">
@@ -221,4 +229,31 @@
     </div>
 </div>
 
-	
+	 <script>
+                    var lat = '{{ listing.lat }}';  
+                    var lng = '{{ listing.lng }}';  
+                    var name_listing = '{{ listing.title }}';  
+                    var mymap = L.map('mapid').setView([lat, lng], 13);
+                    L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                        maxZoom: 18,
+                    }).addTo(mymap);
+                    var marker = L.marker([lat, lng]).addTo(mymap);
+                    var title = "<b>"+name_listing+"</b>";
+                    marker.bindPopup(title).openPopup();
+                    
+                    {# var updateMarker = function(lat, lng) {
+                    marker
+                        .setLatLng([lat, lng])
+                        .bindPopup("Your location :  " + marker.getLatLng().toString())
+                        .openPopup();
+                    return false;
+                    };
+
+                    map.on('click', function(e) {
+                        $('#latInput').val(e.latlng.lat);
+                        $('#lngInput').val(e.latlng.lng);
+                        updateMarker(e.latlng.lat, e.latlng.lng);
+                    });
+                     #}
+                    </script>
