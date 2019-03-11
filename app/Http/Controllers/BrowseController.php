@@ -22,7 +22,8 @@ class BrowseController extends Controller
         foreach($request->only(['lat', 'lng', 'bounds', 'location']) as $k => $v) {
             session([$k => $v]);
         }
-
+      
+        
         $data = $this->getListingData($request);
         if($request->get('ajax')) {
             return response()->json($data);
@@ -186,18 +187,22 @@ class BrowseController extends Controller
         //distance calculations
         $lat = $request->get('lat') ? : GeoIP::getLatitude();
         $lng = $request->get('lng') ? : GeoIP::getLongitude();
-        $data['lat'] = $lat;
-        $data['lng'] = $lng;
+        // $data['lat'] = $lat;
+        // $data['lng'] = $lng;
         
         if($request->get('bounds') || ( $request->get('lat') && $request->get('lng') )) {
             $bounds = $request->get('bounds');
             $bounds = explode(",", $bounds);
 
             if(count($bounds) == 4) {
-                $swLat = $bounds[0];
-                $swLon = $bounds[1];
-                $neLat = $bounds[2];
-                $neLon = $bounds[3];
+                // $swLat = $bounds[0];
+                // $swLon = $bounds[1];
+                // $neLat = $bounds[2];
+                // $neLon = $bounds[3];
+                $swLat = $bounds[1];
+                $swLon = $bounds[0];
+                $neLat = $bounds[3];
+                $neLon = $bounds[2];
 
                 $southWest = new \Geokit\LatLng($swLat, $swLon);
                 $northEast = new \Geokit\LatLng($neLat, $neLon);

@@ -1,3 +1,4 @@
+
 <div class="pt-3 pb-3 mb-4 border-right-0 border-right-0 border-left-0 border-top-0 bg-light" >
     <div class="container-fluid">
 
@@ -29,6 +30,18 @@
                             {{ form_hidden('bounds', input_get('bounds', session_get('bounds')), {'class': 'bounds'}) }}
                             {{ form_hidden('distance', input_get('distance', session_get('distance')), {'class': 'distance'}) }}
                             <script>
+                              var autocomplete = new kt.OsmNamesAutocomplete(
+                                    'location-search', 'https://geocoder.tilehosting.com/dz/', 'Ko9fwSlng65zZ0rQvbRk');
+                                autocomplete.registerCallback(function(item) {
+                                    //alert(JSON.stringify(item, ' ', 2));
+                                    console.log(item.boundingbox);
+                                    $(".lat").val(item.lat);
+                                    $(".lng").val(item.lon);
+                                    $('.bounds').val(item.boundingbox);
+                                    $('.distance').val(5); 
+                                    
+                                    $("#top-search").submit();
+                                });
                                 {# var autocomplete = new google.maps.places.Autocomplete($("#location-search")[0], {});
 
                                 google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -57,3 +70,5 @@
         </form>
     </div>
 </div>
+ 
+

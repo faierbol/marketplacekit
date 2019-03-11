@@ -176,7 +176,7 @@
 {% block scripts %}
   <script>
 
-        console.log("STARTING SCRIPT");
+       // console.log("STARTING SCRIPT");
 
         var xhr = null;
         var params = {{ params|json_encode() | raw }};
@@ -188,6 +188,7 @@
             }
 
             if (xhr && xhr.readyState < 4) {
+                 
                 xhr.abort();
             }
             $('#indicator').show();
@@ -196,7 +197,7 @@
             xhr = $.ajax({
                 url: url,
                 success: function (data) {
-
+                     
                     $("#clear-filters").html($(data).find("#clear-filters").html());
                     $("#category_filter").html($(data).find("#category_filter").html());
                     if (view == 'map') {
@@ -221,7 +222,7 @@
         }
 
         function initListings() {
-             console.log("START initListings");
+            // console.log("START initListings");
 
             //on click categories submit new URL
             $(".category-link").click(function (e) {
@@ -235,15 +236,17 @@
 
             //on change search bar submit new URL
             $('#top-search').on('submit', function (e) {
+                
                 e.preventDefault();
                 $(".auto_submit_item [name='q']").val($("#top-search [name='q']").val());
                 $(".auto_submit_item [name='location']").val($("#top-search [name='location']").val());
                 $(".auto_submit_item [name='lat']").val($("#top-search [name='lat']").val());
                 $(".auto_submit_item [name='lng']").val($("#top-search [name='lng']").val());
                 loadPage('{{ route(setting('marketplace_index')) }}?' + $(".auto_submit_item").serialize());
-                //console.log($("#top-search").serialize());
+               // console.log("DONE SUBMIT "+$("#top-search").serialize());
             });
-            $("#top-search [name='q']").on('input', $.debounce(250, function (e) {
+            $("#top-search [name='q']").on('input', $.debounce(500, function (e) {
+               // console.log("$.debounce");
                 e.preventDefault();
                 $("#top-search").submit();
             }));
@@ -271,7 +274,7 @@
         var mymap = null;
 
         function removeMarkers() {
-            console.log(markers);
+           // console.log(markers);
             //Loop through all the markers and remove
             markers = [];
            
@@ -279,25 +282,37 @@
  
                   
                      
-        function initMap(locations) {
+        function initMap(locations,lat,lng) {
 
-                    console.log("start: initmap");
-                    var lat = 35.679843807352036;// '{{ lat }}';// locations[0]['lat'];
-                    var lng = 3.4621098018212706;//'{{ lng }}';//locations[0]['lng'];
+                  //  console.log("start: initmap");
+                  //  console.log("start: location "+location);
+                  //  console.log("start: lat "+lat);
+                   // console.log("start: lng "+lng);
+
+                    //var lat = '{{ lat }}';//35.679843807352036;// locations[0]['lat'];
+                    //var lng = '{{ lng }}';//3.4621098018212706;// locations[0]['lng'];
 
                     var name_listing = 'name';  
+                    
                     if(mymap == null){
-                        mymap = L.map('mapid').setView([lat, lng], 6);
-                        L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                      //  console.log("null MAP POINT :" +lat);
+                      //  console.log("null MAP POINT :" +lng);
+                        mymap = L.map('mapid').setView([lat, lng], 6); 
+                         L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
                             maxZoom: 18,  
                         }).addTo(mymap);
-
+                    }else{
+                     //   console.log("MAP POINT :" +lat);
+                      //  console.log("MAP POINT :" +lng);
+                        mymap.setView([lat, lng], 12); 
                     }
+                    
                    
                  $('#mapid').height(400);
-                    
-                     for (i = 0; i < locations.length; i++) {
+                    console.log(locations);
+                   if(locations != null){
+                        for (i = 0; i < locations.length; i++) {
                      
                          var position_lat = locations[i]['lat'];
                          var position_lng = locations[i]['lng'];
@@ -307,6 +322,8 @@
                         marker.bindPopup(title);//.openPopup();
                         markers.push(marker);
                      }
+                   } 
+                  
            
            
             
@@ -315,20 +332,20 @@
         }
 
         function updateMap() {
-            console.log("updateMap");
+           // console.log("updateMap");
             removeMarkers();
             var posting = $.get('{{ route(setting('marketplace_index')) }}?ajax=1', $(".auto_submit_item").serialize());
             posting.done(function (data) {
-                console.log('category_id', data.category_id);
-                initMap(data.map_listings);
+               // console.log('category_id', data.category_id);
+                initMap(data.map_listings,data.lat,data.lng);
             });
         }
 
         var view = '{{ view }}';
         $(function () {
-            console.log("STARTING SCRIPT");
+         //   console.log("STARTING SCRIPT");
             initListings();
-             console.log("AFTER initListings");
+            // console.log("AFTER initListings");
             if (view == 'map')
                 updateMap();
         });
