@@ -282,12 +282,12 @@
         function initMap(locations) {
 
                     console.log("start: initmap");
-                    var lat = '{{ lat }}';// locations[0]['lat'];
-                    var lng = '{{ lng }}';//locations[0]['lng'];
+                    var lat = 35.679843807352036;// '{{ lat }}';// locations[0]['lat'];
+                    var lng = 3.4621098018212706;//'{{ lng }}';//locations[0]['lng'];
 
                     var name_listing = 'name';  
                     if(mymap == null){
-                        mymap = L.map('mapid').setView([lat, lng], 13);
+                        mymap = L.map('mapid').setView([lat, lng], 6);
                         L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
                             maxZoom: 18,  
@@ -295,7 +295,7 @@
 
                     }
                    
-                 $('#mapid').height(540);
+                 $('#mapid').height(400);
                     
                      for (i = 0; i < locations.length; i++) {
                      
@@ -304,7 +304,7 @@
                          
                         var marker = L.marker([position_lat, position_lng]).addTo(mymap);
                         var title = "<b>"+locations[i].title+"</b><br/> <a href=" + locations[i].url + ">ouvrir</a>";
-                        marker.bindPopup(title).openPopup();
+                        marker.bindPopup(title);//.openPopup();
                         markers.push(marker);
                      }
            
