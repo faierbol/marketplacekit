@@ -186,6 +186,9 @@ class BrowseController extends Controller
         //distance calculations
         $lat = $request->get('lat') ? : GeoIP::getLatitude();
         $lng = $request->get('lng') ? : GeoIP::getLongitude();
+        $data['lat'] = $lat;
+        $data['lng'] = $lng;
+        
         if($request->get('bounds') || ( $request->get('lat') && $request->get('lng') )) {
             $bounds = $request->get('bounds');
             $bounds = explode(",", $bounds);

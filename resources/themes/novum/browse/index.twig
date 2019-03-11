@@ -282,8 +282,8 @@
         function initMap(locations) {
 
                     console.log("start: initmap");
-                    var lat = locations[0]['lat'];
-                    var lng = locations[0]['lng'];
+                    var lat = '{{ lat }}';// locations[0]['lat'];
+                    var lng = '{{ lng }}';//locations[0]['lng'];
 
                     var name_listing = 'name';  
                     if(mymap == null){
