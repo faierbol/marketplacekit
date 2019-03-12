@@ -11148,7 +11148,8 @@ a:hover {
 }
 
 .bg-hero {
-  background-image: url("/images/hero-bg-compressor.png");
+  background-image: url("/images/hero-bg-compressor.jpeg");
+  background-size: cover;
 }
 
 #mapid {
