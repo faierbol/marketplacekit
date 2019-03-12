@@ -28,7 +28,8 @@
     <div class="card-body">
 
         <div class="form-group">
-            {{ form_text('location', null, {'class' : 'form-control', 'id' : 'location'}) }}
+            {{ form_text('city', null, {'class' : 'form-control', 'id' : 'city', 'placeholder':'Adresse'}) }}
+          
             {{ form_hidden('lat', null, {'class' : 'form-control', 'id' : 'lat'}) }}
             {{ form_hidden('lng', null, {'class' : 'form-control', 'id' : 'lng'}) }}
             <div class="mt-2" style=style="width: 100%; height: 400px;">
@@ -75,8 +76,9 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>
-                                {{ __("City") }}</label>
-                            {{ form_text('city', null, {'class' : 'form-control', 'id' : 'city'}) }}
+                                {{ __("Géolocalisation") }}</label>
+                            {{ form_text('location', null, {'class' : 'form-control', 'id' : 'location'}) }}
+                           
                         </div>
                     </div>
                     <div class="col-6">
