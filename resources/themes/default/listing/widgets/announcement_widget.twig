@@ -20,6 +20,14 @@
                 <a href="{{ listing.user.url }}"><strong>{{ listing.user.display_name }}</strong></a>
             </h3>
             <p class="mt-0 mb-0">{{ listing.user.city }}, {{ listing.user.country }}</p>
+             <p class="text-muted">
+                                            {% if listing.user.phone %} 
+                                               <i class="mdi mdi-phone-classic"></i> {{ listing.user.phone }}<br/>              
+                                            {% endif %}
+                                            {% if listing.user.mobile %}  
+                                            <i class="mdi mdi-cellphone-iphone"></i> {{ listing.user.mobile }}<br/>
+                                            {% endif %}
+                                            </p>  
         </div>
         <div class="row mt-3 mb-3">
 

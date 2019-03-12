@@ -89,7 +89,7 @@ class User extends Authenticatable implements BannableContract, JWTSubject, Plan
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'bio', 'display_name', 'gender', 'phone', 'country', 'unread_messages', 'username', 'provider', 'provider_id'
+        'name', 'email', 'password', 'avatar', 'bio', 'display_name', 'gender', 'phone', 'mobile', 'country', 'unread_messages', 'username', 'provider', 'provider_id'
     ];
 
     /**

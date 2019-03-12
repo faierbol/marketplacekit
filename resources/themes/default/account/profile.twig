@@ -62,10 +62,25 @@
 
                     <div class="input-group">
 
-                        {{ form_text('phone', null, {'class' : 'form-control  border-right-0', 'placeholder':"+44"}) }}
+                        {{ form_text('phone', null, {'class' : 'form-control  border-right-0', 'placeholder':""}) }}
 
                         <div class="input-group-prepend ">
-                            <span class="input-group-text bg-white  border-left-0 " id="basic-addon1"><i class="mdi mdi-phone"></i></span>
+                            <span class="input-group-text bg-white  border-left-0 " id="basic-addon1"><i class="mdi mdi-phone-classic"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-email-input" class="col-3 col-md-3 col-form-label">{{ __('Mobile') }}</label>
+                <div class="col-12 col-sm-9">
+
+                    <div class="input-group">
+
+                        {{ form_text('mobile', null, {'class' : 'form-control  border-right-0', 'placeholder':""}) }}
+
+                        <div class="input-group-prepend ">
+                            <span class="input-group-text bg-white  border-left-0 " id="basic-addon1"><i class="mdi mdi-cellphone-iphone"></i></span>
                         </div>
                     </div>
                 </div>
