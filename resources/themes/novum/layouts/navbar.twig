@@ -22,7 +22,7 @@
         <!-- Left Side Of Navbar -->
          <ul class="navbar-nav mr-auto">
              {% if supported_locales()|length > 1 %}
-           <li class="nav-item">
+           {# <li class="nav-item">
                <div class="dropdown">
                    <button class="btn btn-link language-selector dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        <i class="fa fa-language" aria-hidden="true"></i> {{ current_locale_native() }}
@@ -41,7 +41,7 @@
                        {% endfor %}
                    </div>
                </div>
-           </li>
+           </li> #}
              {% endif %}
 
              {%  if setting('custom_homepage') or module_enabled('homepage') %}
