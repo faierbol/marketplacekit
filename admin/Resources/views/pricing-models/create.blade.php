@@ -44,7 +44,7 @@
 							
                             <div class="form-group">
                                 <label>Widget Type</label>
-                                {{ Form::select('widget', ['buy' => 'Buy', 'book_date' => 'Book a Date', 'book_time' => 'Book a Time'], null, ['placeholder' => 'Select...', 'class' => 'form-control']) }}
+                                {{ Form::select('widget', ['request' => 'Request', 'announcement' => 'Announcement', 'buy' => 'Buy', 'book_date' => 'Book a Date', 'book_time' => 'Book a Time'], null, ['placeholder' => 'Select...', 'class' => 'form-control']) }}
                             </div>                            
 
                             <div class="form-group">
