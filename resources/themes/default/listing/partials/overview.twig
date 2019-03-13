@@ -81,14 +81,25 @@
                         <div class="row">
                             <div class="col-md-12" id="listing-description">
                            {% for t,n in listing.meta %}
-                            <h6 class="mt-2"> {{__(t)  |capitalize }}</h6>
-                                  
-                                    {{ __(n)  |capitalize}}
+                         <div class="mt-2 font-weight-bold">  <span class="mdi mdi-check-circle text-success"></span>  {{__(t)  |capitalize }} : <span class="font-weight-normal">    {{ __(n)  |capitalize}}</span></div>
                            {% endfor %}
                            
                             </div>
                         </div>
                        
+                       <hr/>
+                       <h6>Services supplémentaires</h6>
+                        {# additional_options #}
+                          <div class="row">
+                            <div class="col-md-12" id="additional_options">
+                           {% for t,n in listing.additional_options |  raw  %}
+                            
+                            {{ n.name }} :   {{ n.price }} DZD
+                            {% endfor %}
+                           
+                            </div>
+                        </div>
+
 
                         {% if listing.tags %}
                             {% for tag in listing.tags %}

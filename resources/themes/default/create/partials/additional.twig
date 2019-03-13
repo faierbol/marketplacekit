@@ -14,6 +14,10 @@ document.addEventListener("turbolinks:load", function() {
             dataType: 'json',
             formData: {{ listings_form | json_encode() | raw  }}
     };
+   formRenderOpts.formData =  formRenderOpts.formData.filter(function(i){
+       return i.label !== "Categories";
+   });
+    console.log(formRenderOpts);
     $('.render-form').formRender(formRenderOpts);
 });
 </script>
