@@ -86,7 +86,7 @@
                            
                             </div>
                         </div>
-                       
+                       {% if listing.additional_options %}
                        <hr/>
                        <h6>Services supplémentaires</h6>
                         {# additional_options #}
@@ -99,7 +99,7 @@
                            
                             </div>
                         </div>
-
+                        {% endif %}
 
                         {% if listing.tags %}
                             {% for tag in listing.tags %}
