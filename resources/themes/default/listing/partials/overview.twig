@@ -55,7 +55,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            {% if listing.meta %}
+                            {% if listing.meta is not empty %}
                                 <hr/>
                                 <div class="row">
                                     <div class="col-md-12" id="listing-description">
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                             {% endif %}
-                            {% if listing.additional_options %}
+                            {% if listing.additional_options is not empty %}
                                 <hr/>
                                 <h6>Services supplémentaires</h6>
                                 {# additional_options #}
