@@ -18,7 +18,7 @@ class PricingModel extends Model
 {
     use \Spiritix\LadaCache\Database\LadaCacheTrait;
     protected $fillable = [
-        "name", "widget", "unit_name", "duration_name"
+        "name", "widget", "unit_name", "duration_name","quantity_label"
     ];
 
     public function getPricingUnitAttribute() {

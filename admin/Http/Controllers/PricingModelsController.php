@@ -57,7 +57,7 @@ class PricingModelsController extends Controller
     public function store(Request $request)
     {
         $pricing_model = new PricingModel();
-        $params = $request->only(["name", "widget", "unit_name", "duration_name"]);
+        $params = $request->only(["name", "widget", "unit_name", "duration_name","quantity_label"]);
         $pricing_model->fill($params);
 
         $pricing_model->seller_label = $request->input('seller_label');
@@ -107,7 +107,7 @@ class PricingModelsController extends Controller
     public function update($id, Request $request)
     {
         $pricing_model = PricingModel::find($id);
-        $params = $request->only(["name", "widget", "unit_name", "duration_name"]);
+        $params = $request->only(["name", "widget", "unit_name", "duration_name","quantity_label"]);
         $pricing_model->fill($params);
 
 		$pricing_model->seller_label = $request->input('seller_label');
