@@ -9,10 +9,12 @@
 //@import url($web-font-path);
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Lato");
-@import url("https://cdn.jsdelivr.net/npm/font-proxima-nova@1.0.1/style.css");
+@import url("https://fonts.googleapis.com/css?family=Tajawal");
+//@import url("https://cdn.jsdelivr.net/npm/font-proxima-nova@1.0.1/style.css");
 
-$font-family-serif:      "Proxima Nova Rg", Cambria, "Times New Roman", Times, serif !default;
+//$font-family-serif:      "Proxima Nova Rg", Cambria, "Times New Roman", Times, serif !default;
+//$font-family-serif:     "Amiko",Helvetica Neue,Arial,sans-serif !default;
+$font-family-serif: 'Tajawal', sans-serif !default;
 
 // Navbar ======================================================================
 
