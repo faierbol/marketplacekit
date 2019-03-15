@@ -30,6 +30,14 @@ class GeneralSettingsForm extends Form
             'rules' => '',
             'default_value' => $this->getData('email_address')
         ]);
+        $this->add('init_lat', 'text', [
+            'rules' => '',
+            'default_value' => $this->getData('init_lat')
+        ]);
+        $this->add('init_lng', 'text', [
+            'rules' => '',
+            'default_value' => $this->getData('init_lng')
+        ]);
         $this->add('site_logo', 'file', [
             'rules' => '',
             'help_block' => [
