@@ -1,4 +1,9 @@
-<nav class="navbar navbar-expand-md bg-transparent navbar-light navbar-fixed border-bottom">
+<nav class="navbar navbar-expand-md bg-transparent navbar-light navbar-fixed border-bottom"  style="direction:{%  if current_locale() == 'ar' %} 
+ rtl !important;
+    {% else %}
+    ltr !important;
+{% endif %}
+">
         <div class="container-fluid">
     <!-- Branding Image -->
     <a class="navbar-brand" href="/{{ current_locale() != default_locale()?current_locale():'' }}">
@@ -7,7 +12,7 @@
         {% else %}
         
             {% if current_locale() != 'ar' %}
-                <img src="{{ setting('logo', '../../logo.png') }}" title="{{ setting('site_title') }}" class="logo"/>
+                <img src="{{ setting('logo', '../../logo.png') }}" title="{{ setting('site_title') }}" class="logo"/> <span class="badge badge-pill badge-light">{{ setting('country_code') }}</span>
             {% else %}
                <img src="/logo-ar.svg" title="{{ setting('site_title') }}" class="logo"/>
             {% endif %}

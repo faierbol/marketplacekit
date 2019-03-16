@@ -30,6 +30,10 @@ class GeneralSettingsForm extends Form
             'rules' => '',
             'default_value' => $this->getData('email_address')
         ]);
+        $this->add('country_code', 'text', [
+            'rules' => '',
+            'default_value' => $this->getData('country_code')
+        ]);
         $this->add('init_lat', 'text', [
             'rules' => '',
             'default_value' => $this->getData('init_lat')
