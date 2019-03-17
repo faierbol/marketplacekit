@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <!-- Left Side Of Navbar -->
          <ul class="navbar-nav mr-auto">
-             {% if supported_locales()|length > 1 %}
+             {% if supported_locales()|length > 1 and setting('multi_lang') %}
             <li class="nav-item">
                <div class="dropdown">
                    <button class="btn btn-link language-selector dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
