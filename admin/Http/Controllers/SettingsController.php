@@ -112,7 +112,7 @@ class SettingsController extends Controller
             Setting::set($key, $input);
         }
         Setting::save();
-        $checkboxes = ['show_map', 'show_grid', 'show_list', 'listings_require_verification', 'enable_geo_search', 'custom_homepage', 'show_search_sidebar', 'paypal_enabled', 'single_listing_per_user'];
+        $checkboxes = ['multi_lang','show_map', 'show_grid', 'show_list', 'listings_require_verification', 'enable_geo_search', 'custom_homepage', 'show_search_sidebar', 'paypal_enabled', 'single_listing_per_user'];
         #dd($request->has('show_list'));
         foreach($checkboxes as $checkbox) {
             Setting::set($checkbox, $request->has($checkbox));
