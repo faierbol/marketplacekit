@@ -12,7 +12,7 @@ class Category extends Model
     protected $parent = 'parent_id';
 
     protected $fillable = [
-        'name', 'hash', 'order', 'parent_id', 'slug'
+        'name', 'hash', 'order', 'parent_id', 'slug','icon_name'
     ];
 
 	public function child()

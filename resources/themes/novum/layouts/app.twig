@@ -94,7 +94,12 @@
 </head>
 <body data-turbolinks="true">
 
-<div id="app">
+<div id="app" style="direction:{%  if current_locale() == 'ar' %} 
+ rtl !important;
+    {% else %}
+    ltr !important;
+{% endif %}
+">
 
     {% block navbar %}
         {% include 'layouts.navbar.twig' %}

@@ -17,7 +17,11 @@ class CategoryForm extends Form
         $this->add('order', 'number', [
             'rules' => 'integer'
         ]);
-		
+        
+        $this->add('icon_name', 'text', [
+            'rules' => ''
+        ]);
+        
 		$pricing_models = PricingModel::pluck('seller_label','id');
 		if($pricing_models)
 			$pricing_models = $pricing_models->toArray();
