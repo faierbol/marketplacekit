@@ -14,6 +14,15 @@ class GeneralSettingsForm extends Form
             'rules' => '',
             'default_value' => $this->getData('site_name')
         ]);
+        $this->add('home_title', 'text', [
+            'rules' => '',
+            'default_value' => $this->getData('home_title')
+        ]);
+        $this->add('home_description', 'text', [
+            'rules' => '',
+            'default_value' => $this->getData('home_description')
+        ]);
+        
         $this->add('site_url', 'text', [
             'rules' => '',
             'default_value' => $this->getData('site_url')
