@@ -220,7 +220,8 @@ return [
             'current_locale_direction',
             'get_localized_url',
             'recaptcha',
-			'current_website',
+            'current_website',
+            'img_country'
         ],
 
         /*

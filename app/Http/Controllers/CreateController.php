@@ -137,7 +137,22 @@ class CreateController extends Controller
         $params['city'] = $city;
         $params['country'] = GeoIP::getCountryCode();
 
-        $params['currency'] = Setting::get('currency', config('marketplace.currency'));
+        $country = session('country','Algérie');
+        switch ($country) {
+            case 'Algérie':
+                $params['currency'] = "DZD";
+                break;
+            case 'Tunisie':
+                $params['currency'] = "TND";
+                break;
+            case 'Maroc':
+                $params['currency'] = "MAD";
+                break;
+            default:
+                $params['currency'] = Setting::get('currency', config('marketplace.currency'));
+                break;
+        }
+       
         $params['is_published'] = false;
 
         $listing = Listing::create($params);

@@ -48,6 +48,9 @@ class HomeController extends Controller
             return app('App\Http\Controllers\BrowseController')->listings($request);
         }
 
+    
+      
+        
         $current_locale = LaravelLocalization::getCurrentLocale();
         $data['widgets'] = Widget::where('locale', $current_locale)->orderBy('position', 'ASC')->get();
         $data['show_search'] = false;

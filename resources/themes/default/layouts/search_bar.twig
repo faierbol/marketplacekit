@@ -31,7 +31,7 @@
                             {{ form_hidden('distance', input_get('distance', session_get('distance')), {'class': 'distance'}) }}
                             <script>
                               var autocomplete = new kt.OsmNamesAutocomplete(
-                                    'location-search', 'https://geocoder.tilehosting.com/dz/', 'Ko9fwSlng65zZ0rQvbRk');
+                                    'location-search', 'https://geocoder.tilehosting.com/{{img_country(app.session.get('country'))}}/', 'Ko9fwSlng65zZ0rQvbRk');
                                 autocomplete.registerCallback(function(item) {
                                     //alert(JSON.stringify(item, ' ', 2));
                                     console.log(item.boundingbox);

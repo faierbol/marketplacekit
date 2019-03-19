@@ -63,8 +63,8 @@ class AppServiceProvider extends ServiceProvider
                 setting(['googlmapper.key' => env("GOOGLE_MAPS_KEY")]);
                 //if still no key then disable maps
                 if (!setting('googlmapper.key')) {
-                    setting(['enable_geo_search' => false]);
-                    setting(['show_map' => false]);
+                   // setting(['enable_geo_search' => false]);
+                   // setting(['show_map' => false]);
                     if (setting('default_view') == 'map' && !env("DEMO")) {
                         setting(['default_view' => 'grid']);
                     }

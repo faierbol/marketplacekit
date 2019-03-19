@@ -1,4 +1,21 @@
 <?php
+
+function img_country($country){
+    switch ($country){
+        case "Algérie":
+        return 'dz';
+        break;
+        case "Tunisie":
+        return 'tn';
+        break;
+        case "Maroc":
+        return 'ma';
+        break;
+        default:
+        return 'dz';
+    }
+   
+}
 function url_shorten( $url, $length = 35 ) {
     $stripped = str_replace( array( 'https://', 'http://', 'www.' ), '', $url );
     $short_url = rtrim( $stripped, '/\\' );

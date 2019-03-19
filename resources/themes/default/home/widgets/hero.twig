@@ -8,7 +8,7 @@
 			<div class="text-center mb-4"> <img src="logo-ar.svg" class="hero-img" title=""/></div>
 
 		   {% endif %}
-		    <h2 class="text-{{widget.alignment}} pb-2">{{widget.title}}<br/>{{__("from our")}} {{ count_all }} {{__("offers")}}  </h2>
+		    <h2 class="text-{{widget.alignment}} pb-2">{{widget.title}}<br/>{{__("from our")}} {{ count_all }} {{__("offers")}} {{ __('en')}} {{ app.session.get('country')}}  </h2>
             <p class="text-{{widget.alignment}} pb-2 text-white" style="font-size:14px">{{widget.metadata}}</p>
         </div>
     </div>

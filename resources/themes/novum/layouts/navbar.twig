@@ -16,9 +16,10 @@
             {% else %}
                <img src="/logo-ar.svg" title="{{ setting('site_title') }}" class="logo"/>
             {% endif %}
+             
         {% endif %}
     </a>
-
+    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,6 +27,28 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <!-- Left Side Of Navbar -->
          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                  <div class="dropdown">
+                   <button class="btn btn-link  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img class="rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/{{img_country(app.session.get('country'))}}.svg" width=30> {{ app.session.get('country') }}
+                   </button>
+                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      
+                        <a class="dropdown-item" rel="alternate" 
+                            href="{{ route('home',{'country':'Algérie'})  }}">
+                           <img class="rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/dz.svg" width=20>   {{ __("Algérie") }}
+                        </a>
+                        <a class="dropdown-item" rel="alternate" 
+                          href="{{ route('home',{'country':'Tunisie'})  }}">
+                          <img class="rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/tn.svg" width=20>    {{ __("Tunisie") }}
+                        </a> 
+                        <a class="dropdown-item" rel="alternate" 
+                         href="{{ route('home',{'country':'Maroc'})  }}">
+                           <img class="rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/ma.svg" width=20>   {{ __("Maroc") }}
+                        </a>
+                   </div>
+               </div>
+            </li>
              {% if supported_locales()|length > 1 and setting('multi_lang') %}
             <li class="nav-item">
                <div class="dropdown">
