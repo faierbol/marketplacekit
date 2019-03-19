@@ -62,10 +62,10 @@
                                         {% for t,n in listing.meta %}
                                             <div class="mt-2 font-weight-bold">
                                                 <span class="mdi mdi-check-circle text-success"></span>
-                                                {{_l(t)  |capitalize }}
+                                                {{_l(t)  |capitalize |replace({'-': ' '})}}
                                                 : 
                                                      <span class="font-weight-normal">
-                                                    {{ _l(n)  |capitalize }}
+                                                    {{ _l(n)  |capitalize |replace({'-': ' '}) }}
                                                 </span>
                                               
                                                
