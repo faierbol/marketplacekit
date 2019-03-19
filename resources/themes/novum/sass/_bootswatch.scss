@@ -9,18 +9,18 @@
 //@import url($web-font-path);
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Tajawal");
+//@import url("https://fonts.googleapis.com/css?family=Tajawal");
 //@import url("https://cdn.jsdelivr.net/npm/font-proxima-nova@1.0.1/style.css");
 
 //$font-family-serif:      "Proxima Nova Rg", Cambria, "Times New Roman", Times, serif !default;
 //$font-family-serif:     "Amiko",Helvetica Neue,Arial,sans-serif !default;
-$font-family-serif: 'Tajawal', sans-serif !default;
+$font-family-serif:  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";//'Tajawal', sans-serif !default;
 
 // Navbar ======================================================================
 
 .navbar {
-  font-size: 0.875em;
-  font-size: 0.952rem;
+  font-size: 0.990em;//0-875
+  font-size: 0.990rem;
 }
 
 .bg-dark {
@@ -44,7 +44,7 @@ $font-family-serif: 'Tajawal', sans-serif !default;
 .btn {
   border-radius: 1.078em;
   font-family: $font-family-sans-serif;
-  font-size: 0.952em;
+  font-size: 0.990em;
 
   &-lg {
     /*border-radius: 2.688em;*/
@@ -79,7 +79,7 @@ blockquote {
 }
 
 footer {
-  font-size: 0.875em;
+  font-size: 0.990em;
 }
 
 .lead {
@@ -161,7 +161,7 @@ table,
 // Navs ========================================================================
 
 .dropdown-menu {
-  font-size: 0.875em;
+  font-size: 0.990em;
 }
 
 // Indicators ==================================================================
@@ -169,7 +169,7 @@ table,
 .alert {
   border: none;
   color: $white;
-  font-size: 0.875em;
+  font-size: 0.990em;
 
   &, p {
     font-family: $font-family-sans-serif;
