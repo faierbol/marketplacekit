@@ -95,6 +95,28 @@ class BrowseController extends Controller
         $listings = new Listing();
         $listings = $listings->active();
 
+        $country = session('country');
+        $code = '';
+        switch ($country) {
+            case 'Algérie':
+                $code = "DZ";
+                break;
+            case 'Tunisie':
+                $code = "TN";
+                break;
+            case 'Maroc':
+                $code = "MA";
+                break;
+            default:
+                $code = "";
+                break;
+        }
+
+        if($code != "")
+        {
+            $listings = $listings->where('country', '=', $code);
+        }
+
         //search by title, description, tags
         if($request->get('q')) {
             $listings = $listings->search($request->get('q'));
