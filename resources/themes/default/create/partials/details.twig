@@ -85,7 +85,9 @@
                         <div class="form-group">
                             <label>
                                 {{ __("Country") }}</label>
-                            {{ form_text('country', null, {'class' : 'form-control', 'id' : 'country', 'readonly':'readonly'}) }}
+                            {{ form_select('country', {'DZ':'Algérie','MA':'Maroc','TN':'Tunisie','':'Autres'},null , {'class' : 'form-control', 'id' : 'country'}) }}
+ 
+                            {# {{ form_text('country', null, {'class' : 'form-control', 'id' : 'country', 'readonly':'readonly'}) }} #}
                         </div>
                     </div>
                 </div>
