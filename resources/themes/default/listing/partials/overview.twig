@@ -62,10 +62,10 @@
                                         {% for t,n in listing.meta %}
                                             <div class="mt-2 font-weight-bold">
                                                 <span class="mdi mdi-check-circle text-success"></span>
-                                                {{__(t) |string |capitalize }}
+                                                {{__(t)  |capitalize }}
                                                 :
                                                 <span class="font-weight-normal">
-                                                    {{ __(n) |string |capitalize }}
+                                                    {{ __(n)  |capitalize }}
                                                 </span>
                                             </div>
                                         {% endfor %}
