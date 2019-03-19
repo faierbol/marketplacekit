@@ -64,9 +64,13 @@
                                                 <span class="mdi mdi-check-circle text-success"></span>
                                                 {{_l(t)  |capitalize }}
                                                 :
-                                                <span class="font-weight-normal">
-                                                    {{ _l(n)  }}
+                                                {% if n not empty %}
+                                                     <span class="font-weight-normal">
+                                                    {{ _l(n)  |capitalize }}
                                                 </span>
+                                                
+                                                {% endif %}
+                                               
                                             </div>
                                         {% endfor %}
                                     </div>
