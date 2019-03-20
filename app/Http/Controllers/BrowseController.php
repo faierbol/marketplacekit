@@ -284,12 +284,17 @@ class BrowseController extends Controller
         if($request->get('ajax')) {
             $data['map_listings'] =  $listings->whereNotNull('lat')->whereNotNull('lng')->limit(1000)->get();
         }
-
+       // $listings = $listings->orderBy('spotlight_on','desc')->latest()->get();
+       // ->orderBy('spotlight_on', 'DESC');
         $data['params'] = $request->all();
         $data['sort'] = $sort;
 
         #dd($listings->get());
-        $data['listings'] = $listings->paginate(24);
+        //  $data['listings'] = $listings->paginate(24);
+        //  $listings = $listings->orderBy('spotlight_on','DESC'); 
+        //  $spots = $listings->where('spotlight_on','=','true');
+        //  $data['spots'] = $spots;
+        $data['listings'] = $listings->paginate(24); 
         $data['is_filtered'] = $is_filtered;
 
         $data['load_time'] = round(microtime(true) - LARAVEL_START);

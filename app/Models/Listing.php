@@ -54,6 +54,7 @@ class Listing extends Model
           'shipping_options' => 'json',
           'variant_options' => 'json',
           'timeslots' => 'json',
+          'spotlight_on' => 'boolean',
     ];
     protected $spatialFields = [
         'location',
@@ -74,7 +75,18 @@ class Listing extends Model
 
     public function toggleSpotlight()
     {
-        $this->spotlight = ($this->spotlight)?null:Carbon::now();
+        if($this->spotlight)
+        {
+            $this->spotlight = null;
+            $this->spotlight_on = false;
+            $this->priority_until = null;
+        }else{
+            $this->spotlight = Carbon::now();
+            $this->spotlight_on = true;
+            $this->priority_until = Carbon::now()->addMonth();
+        }
+        //$this->spotlight = ($this->spotlight)?null:Carbon::now();
+       
         $this->save();
     }
 
