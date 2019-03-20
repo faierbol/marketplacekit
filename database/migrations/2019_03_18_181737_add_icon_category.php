@@ -15,7 +15,7 @@ class AddIconCategory extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             //
-            $table->string('icon_name', 191);
+            $table->string('icon_name')->nullable();
 
         });
     }

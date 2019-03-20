@@ -53,6 +53,7 @@ class CategoriesController extends Controller
         $data['slug'] = str_slug($request->get('name'));
         $data['order'] = $request->get('order', 1);
         $data['parent_id'] = $request->get('parent_id');
+        $data['icon_name'] = $request->get('icon_name','share');
         $category = Category::create( $data );
 		
 		$pricing_models = $request->input('pricing_models');
