@@ -16,7 +16,7 @@
             <div class="row">
                 {% for category in categories %}
 
-                    {% if category.categories | length %}
+                    {% if category.icon_name != "none" %}
 
                         <div class="col-sm-3 col-6 mb-5 text-center">
                             <i class="mdi mdi-48px mdi-{{category.icon_name}} mr-2"></i>
