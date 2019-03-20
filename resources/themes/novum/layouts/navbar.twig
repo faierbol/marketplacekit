@@ -24,6 +24,45 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
+    {% if app.session.get('country') is empty %}
+<script>
+ $(window).on('load',function(){
+        $('#exampleModal').modal('show');
+    });
+</script>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Choisir votre payé</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+               <a class="dropdown-item" rel="alternate" 
+                            href="{{ route('home',{'country':'Algérie'})  }}">
+                           <img class="rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/dz.svg" width=20>   {{ __("Algérie") }}
+                        </a>
+                        <a class="dropdown-item" rel="alternate" 
+                          href="{{ route('home',{'country':'Tunisie'})  }}">
+                          <img class="rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/tn.svg" width=20>    {{ __("Tunisie") }}
+                        </a> 
+                        <a class="dropdown-item" rel="alternate" 
+                         href="{{ route('home',{'country':'Maroc'})  }}">
+                           <img class="rounded" src="https://lipis.github.io/flag-icon-css/flags/4x3/ma.svg" width=20>   {{ __("Maroc") }}
+                        </a>
+        </div>
+        <div class="modal-footer">
+            
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    {% endif %}
+
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <!-- Left Side Of Navbar -->
          <ul class="navbar-nav mr-auto">
