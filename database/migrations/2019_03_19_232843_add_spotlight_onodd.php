@@ -15,7 +15,7 @@ class AddSpotlightOnodd extends Migration
     {
         Schema::table('listings', function (Blueprint $table) {
             //
-            $table->boolean('spotlight_on');
+            $table->boolean('spotlight_on')->default(0);
         });
     }
 
