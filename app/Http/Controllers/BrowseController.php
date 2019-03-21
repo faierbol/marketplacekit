@@ -114,7 +114,7 @@ class BrowseController extends Controller
 
         if($code != "")
         {
-            $listings = $listings->where('country', '=', $code);
+            $listings = $listings->where('listings.country',  $code);
         }
 
         //search by title, description, tags
