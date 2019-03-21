@@ -19,8 +19,12 @@
                     {% if category.icon_name != "none" %}
 
                         <div class="col-sm-3 col-6 mb-5 text-center">
+                            
+                            <a href="{{ route(setting('marketplace_index'), {'category' : category}) }}">
                             <i class="mdi mdi-48px mdi-{{category.icon_name}} mr-2"></i>
-                            <a href="{{ route(setting('marketplace_index'), {'category' : category}) }}"><p >{{ _l(category.name) }}</p></a>
+                            <p >{{ _l(category.name) }}</p>
+                            
+                            </a>
                             {# {% for child_category in category.categories %}
                                 <a href="{{ route(setting('marketplace_index'), {'category' : child_category.id}) }}">{{ _l(child_category.name) }}</a>
                                 <br/>
